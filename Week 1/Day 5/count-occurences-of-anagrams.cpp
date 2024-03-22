@@ -13,6 +13,10 @@ int main()
         freq2[txt[i]]++;
     }
 
+    for (int i = 0; i < pat.size(); i++){
+        cout << freq[pat[i]] << " " << freq[txt[i]] << endl;
+    }
+
     int ans = 0;
     if(freq == freq2) ans++;
     
