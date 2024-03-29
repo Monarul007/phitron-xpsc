@@ -14,7 +14,7 @@ int main()
         cin >> arr[i];
     }
 
-    long long minLength = n;
+    long long minLength = n + 1;
     long long left = 0, right = 0, sum = 0;
     while (right < n) {
         sum += arr[right];
@@ -26,7 +26,7 @@ int main()
         right++;
     }
 
-    if (minLength == n) {
+    if (minLength == n + 1) {
         cout << -1;
     } else {
         cout << minLength;
