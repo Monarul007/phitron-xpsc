@@ -4,66 +4,61 @@ int main()
 {
     // Write your code here
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(NULL); 
 
     int t;
     cin >> t;
     while(t--){
-        string s1, s2;
+        string s1, s2;         
         cin >> s1 >> s2;
-        
-        if(s1 == s2){
-            cout << "=" << '\n';
-        }else{
-            char s1last = s1.back();
-            char s2last = s2.back();
-            if(s1last == 'L' && s2last == 'L'){
-                int countXS1 = 0;
-                for(int i = 0; i < s1.size(); i++){
-                    if(s1[i] == 'X'){
-                        countXS1++;
-                    }
-                }
-                int countXS2 = 0;
-                for(int i = 0; i < s2.size(); i++){
-                    if(s2[i] == 'X'){
-                        countXS2++;
-                    }
-                }
-                if(countXS1 > countXS2){
-                    cout << ">" << '\n';
-                }else{
-                    cout << "<" << '\n';
-                }
-            }else if(s1last == 'S' && s2last == 'S'){
-                int countXS1 = 0;
-                for(int i = 0; i < s1.size(); i++){
-                    if(s1[i] == 'X'){
-                        countXS1++;
-                    }
-                }
-                int countXS2 = 0;
-                for(int i = 0; i < s2.size(); i++){
-                    if(s2[i] == 'X'){
-                        countXS2++;
-                    }
-                }
-                if(countXS1 > countXS2){
-                    cout << "<" << '\n';
-                }else{
-                    cout << ">" << '\n';
-                }
-            }else if(s1last == 'S' && s2last == 'M'){
-                cout << "<" << '\n';
-            }else if(s1last == 'M' && s2last == 'S'){
-                cout << ">" << '\n';
-            }else if(s1last == 'M' && s2last == 'L'){
-                cout << "<" << '\n';
-            }else if(s1last == 'L' && s2last == 'S'){
-                cout << ">" << '\n';
-            }else if(s1last == 'L' && s2last == 'M'){
-                cout << ">" << '\n';
+        int n = s1.size();
+        int m = s2.size();
+ 
+        char s1last, s2last;
+        int xCount1 = 0, xCount2 = 0;
+        for(int i=0;i<n;i++){
+            if(s1[i] != 'X'){
+                s1last = s1[i];
+            }else{
+                xCount1++;
             }
+        } 
+        for(int i = 0; i < m; i++){
+            if(s2[i] != 'X'){
+                s2last = s2[i];
+            }else{
+                xCount2++;
+            }
+        }
+ 
+        if(s1last == s2last ){
+            if(xCount1 == xCount2 || s1last == 'M'){
+                cout << "=" << '\n';
+                continue;
+            }
+            if(s1last == 'S'){
+                if(xCount1 > xCount2){
+                    cout << "<" << '\n';
+                }else{
+                    cout << ">" << '\n';
+                }
+            }else if(s1last == 'L'){
+                if(xCount1 > xCount2){
+                    cout << ">" << '\n';
+                }else{
+                    cout << "<" << '\n';
+                }
+            }
+            continue;
+        }
+        if(s1last == 'S'){
+            cout << "<" << '\n';
+        }else if(s1last == 'M' and s2last =='S'){
+            cout << ">" << '\n';
+        }else if(s1last == 'M' and s2last =='L'){
+            cout << "<"<< '\n';
+        }else if(s1last == 'L'){
+            cout << ">" << '\n';
         }
     }
 
